@@ -1,6 +1,6 @@
 # Task Management API
 
-This document provides instructions on how to set up and run the Task Management API locally, test it using Postman, and details the API routes along with their request formats.
+Instructions on how to set up and run the Task Management API locally, test it using Postman. The API routes and request formats are also included.
 
 ---
 
