@@ -99,6 +99,11 @@ You will receive the jwt token in the response, and you will use this as authori
   "Authorization": "Bearer <jwt_token>"
 }
 ```
+**Query Parameters:**
+- `status` (optional): Filter by task status (`Pending`, `In Progress`, `Completed`).
+- `page` (optional): Page number for pagination (default: 1).
+- `limit` (optional): Number of tasks per page (default: 10).
+- `search` (optional): Search tasks by title or description.
 
 #### 3. **Get a Task by ID**
 **GET** `/tasks/:id`
