@@ -33,12 +33,11 @@ The server will be running at `http://localhost:5000`.
 
 ### Using Postman
 1. Open [Postman](https://www.postman.com/).
-2. Create a new collection and add requests for the API endpoints.
-3. Use the following base URL for all requests:
+2. Use the following base URL for all requests:
    ```
    http://localhost:5000
    ```
-4. Add a header for authenticated routes:
+3. Add a header for authenticated routes (tasks routes):
    ```
    Key: Authorization
    Value: Bearer <your_jwt_token>
