@@ -1,9 +1,14 @@
 const Task = require("../models/Task");
+const { getIO } = require("../config/socket");
 
 exports.createTask = async (req, res, next) => {
   try {
     const { title, description, status } = req.body;
     const task = await Task.create({ title, description, status });
+
+    const io = getIO();
+    io.emit("taskCreated", task);
+
     res.status(201).json({ success: true, data: task });
   } catch (error) {
     next(error);
@@ -43,6 +48,10 @@ exports.updateTask = async (req, res, next) => {
       runValidators: true,
     });
     if (!task) return res.status(404).json({ message: "Task not found" });
+
+    const io = getIO();
+    io.emit("taskUpdated", task);
+
     res.status(200).json({ success: true, data: task });
   } catch (error) {
     next(error);
@@ -53,6 +62,10 @@ exports.deleteTask = async (req, res, next) => {
   try {
     const task = await Task.findByIdAndDelete(req.params.id);
     if (!task) return res.status(404).json({ message: "Task not found" });
+
+    const io = getIO();
+    io.emit("taskDeleted", req.params.id);
+
     res.status(200).json({ success: true, message: "Task deleted" });
   } catch (error) {
     next(error);
